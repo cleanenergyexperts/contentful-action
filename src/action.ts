@@ -90,6 +90,7 @@ export const runAction = async (space): Promise<void> => {
           locales = (await environment.getLocales());
           attempt = 0;
       } catch {
+          Logger.verbose("Locales not available. Trying again...");
           attempt -= 1;
           await delay();
       }
