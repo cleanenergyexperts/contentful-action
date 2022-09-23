@@ -82,7 +82,7 @@ export const runAction = async (space): Promise<void> => {
     })
   );
 
-  Logger.verbose("Set default locale to new environment:::");
+  Logger.verbose("Set default locale to new environment::");
   let attempt = 30;
   let locales;
   do {
