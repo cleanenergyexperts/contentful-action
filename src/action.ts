@@ -83,7 +83,20 @@ export const runAction = async (space): Promise<void> => {
   );
 
   Logger.verbose("Set default locale to new environment");
-  const defaultLocale = (await environment.getLocales()).items.find(
+  let attempt = 30;
+  let locales;
+  do {
+      try {
+          locales = (await environment.getLocales());
+          attempt = 0;
+      } catch {
+          attempt -= 1;
+          await delay();
+      }
+  } while (attempt > 0)
+
+
+  const defaultLocale = locales.items.find(
     (locale) => locale.default
   ).code;
 
