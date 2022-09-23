@@ -113,9 +113,10 @@ export const runAction = async (space): Promise<void> => {
   );
 
   Logger.verbose("Find current version of the contentful space");
-  const { items: versions } = await environment.getEntries({
+  // @ts-ignore
+  const { items: versions } = await environment.getEntries(JSON.stringify({
     content_type: VERSION_CONTENT_TYPE,
-  });
+  }));
 
   // If there is no entry or more than one of CONTENTFUL_VERSION_TRACKING
   // Then throw an Error and abort
