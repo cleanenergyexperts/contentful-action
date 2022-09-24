@@ -113,7 +113,6 @@ export const runAction = async (space): Promise<void> => {
   );
 
   Logger.verbose("Find current version of the contentful space");
-  // @ts-ignore
   const { items: versions } = await environment.getEntries({
     content_type: VERSION_CONTENT_TYPE,
   });
