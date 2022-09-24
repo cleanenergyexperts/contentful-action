@@ -127,6 +127,8 @@ export const runAction = async (space): Promise<void> => {
   }
 
   if (versions.length > 1) {
+    Logger.verbose(versions.length);
+    Logger.verbose(JSON.stringify(versions));
     throw new Error(
       `There should only be one entry of type "${VERSION_CONTENT_TYPE}"`
     );
